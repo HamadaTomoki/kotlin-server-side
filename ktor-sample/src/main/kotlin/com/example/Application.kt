@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.routes.registerCustomerRoutes
+import com.example.routes.registerOrderRoutes
 import io.ktor.server.netty.*
 import io.ktor.application.*
 import io.ktor.features.*
@@ -13,4 +14,5 @@ fun Application.module(testing: Boolean = false) {
         json()
     }
     registerCustomerRoutes()
+    registerOrderRoutes()
 }
