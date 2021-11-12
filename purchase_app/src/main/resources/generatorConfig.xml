@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD
+    MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/hamadatomoki/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/8.0.26/e5ec6610020a3084b7d32ee725d1650176f6b3de/mysql-connector-java-8.0.26.jar"/>
+    <context id="MySQLTables" targetRuntime="MyBatis3Kotlin">
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/purchase_app_db"
+                userId="root"
+                password="kotlin">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+        <javaModelGenerator
+                targetPackage="jp.co.azureplus.purchase_app.infrastructure.database.record.generated"
+                targetProject="src/main/kotlin">
+        </javaModelGenerator>
+        <javaClientGenerator
+                targetPackage="jp.co.azureplus.purchase_app.infrastructure.database.mapper.generated"
+                targetProject="src/main/kotlin">
+        </javaClientGenerator>
+        <table tableName="%">
+            <columnOverride column="role_type" typeHandler="org.apache.ibatis.type.EnumTypeHandler"
+                            javaType="jp.co.azureplus.purchase_app.domain.enumtype.RoleType"/>
+            <columnOverride column="confirm_status" typeHandler="org.apache.ibatis.type.EnumTypeHandler"
+                            javaType="jp.co.azureplus.purchase_app.domain.enumtype.ConfirmStatus"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+
+  # MySQL
+  db:
+    build: ./db
+    env_file: ./db/.env
+    environment:
+      - MYSQL_DATABASE=purchase_app_db
+      - MYSQL_ROOT_PASSWORD=kotlin
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/my.cnf
+      - ./db/sql:/docker-entrypoint-initdb.d
+    restart: always
+
+  # Redis
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis:/data"
